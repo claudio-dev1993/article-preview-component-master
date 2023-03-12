@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
+:root {
+    /*colors*/
+    --Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+    --Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+    --Grayish-Blue: hsl(216, 28%, 90%);
+    --Light-Grayish-Blue: hsl(210, 46%, 95%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    min-width: 300px;
+    max-width: 1440px;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    padding: 4rem 1.5rem;
+    background-color: var(--Grayish-Blue);
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1, minmax(300px, auto);
+    grid-template-rows: repeat(2, 1fr), minmax(200px, auto);
+    grid-template-areas:
+        "main-image"
+        "main-content";
+    background-color: var(--Light-Grayish-Blue);
+    border-radius: 1rem;
+    box-shadow: 0px 5px 40px 5px hsl(214, 17%, 51%);
+}
+
+.main-image {
+    grid-area: main-image;
+}
+
+.main-image__drawers {
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.main-content {
+    grid-area: main-content;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.textual-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.textual-content__header {
+    color: var(--Very-Dark-Grayish-Blue);
+    font-size: 1.1rem;
+}
+
+.textual-content__text {
+    color: var(--Desaturated-Dark-Blue);
+    font-size: 0.9rem;
+}
+
+.profile-share-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.profile-image-content {
+    width: 2.5rem;
+}
+
+.profile-image-content__avatar {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profile-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-user__name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--Very-Dark-Grayish-Blue);
+}
+
+.profile-user__post-date {
+    font-size: 0.8rem;
+    color: var(--Desaturated-Dark-Blue);
+}
+
+.share {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share__button {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: var(--Grayish-Blue);
+}
+
+.share__button-hover:hover {
+    cursor: pointer;
+}
+
+.share__icon {
+    object-fit: contain;
+}
+
+.popup__share-button {
+    background-color: var(--Light-Grayish-Blue);
+    position: relative;
+    z-index: 2;
+}
+
+.share-popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+}
+
+.share-popup__text {
+    color: var(--Desaturated-Dark-Blue);
+    letter-spacing: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.share-popup__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+.share-popup .share-popup__links {
+    visibility: hidden;
+    width: 320px;
+    height: 4rem;
+    background-color: var(--Very-Dark-Grayish-Blue);
+    color: var(--Light-Grayish-Blue);
+    text-align: center;
+    border-radius: 0 0 1rem 1rem;
+    padding: 0.5rem 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    margin-left: -100px;
+}
+
+.share-popup .show {
+    visibility: visible;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@media screen and (min-width: 625px) {
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #container {
+        max-width: 45rem;
+        grid-template-columns: repeat(2, 1fr), minmax(300px, auto);
+        grid-template-rows: 1, minmax(200px, auto);
+        grid-template-areas:
+            "main-image main-content";
+    }
+
+    .main-content {
+        padding: 2rem;
+    }
+
+    .main-image__drawers {
+        max-width: auto;
+        height: 100%;
+        border-radius: 1rem 0 0 1rem;
+    }
+
+    .share-popup__links {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 0.5rem;
+    }
+
+    .share-popup .share-popup__links {
+        
+        width: 12rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -100px;
+    }
+
+    .share-popup .share-popup__links::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+
+}
